@@ -103,7 +103,7 @@
     </target>
     
     
-    <target name="JavatoXml" depends="init">
+    <target name="JavatoXml">
         <echo message="JAVA to XML target has been called"/>
         <java classname="JAXBExample" classpath="build">
 			<classpath>
