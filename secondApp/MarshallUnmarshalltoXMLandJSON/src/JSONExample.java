@@ -124,22 +124,36 @@ public static void main(String[] args) throws org.json.JSONException {
     
 	 if(opt==2){
 		
+         //from JAVA object to JSON
+         HealthProfile hp = new HealthProfile(68.0, 1.72);
+         People pallo = new People(new Long(1), "Pallo", "Pinco", "1984-06-21",hp);
          
          
-	 //from JAVA object to JSON
-     People p=new People();
-     Gson gson = new Gson();
-     // convert java object to JSON format,
-     // and returned as JSON formatted string
-     String json = gson.toJson(p);
+         HealthProfile hp0 = new HealthProfile(93.0, 1.10);
+         People doctor = new People(new Long(3), "Doctor", "Web", "2001-03-29",hp0);
+         
+         HealthProfile hp1=new HealthProfile(800,2.75);
+         People john = new People(new Long(2), "John", "Doe", "1985-03-20", hp1);
+         
+         
+         Gson gson = new Gson();
+         // convert java object to JSON format,
+         // and returned as JSON formatted string
+         String json = gson.toJson(pallo);
+         String json2 = gson.toJson(doctor);
+         String json3 = gson.toJson(john);
+         
+         
+         try {
+             
+             FileWriter writer = new FileWriter("javatofile.json");
+             writer.write(json);
+             writer.write(json2);
+             writer.write(json3);
+             writer.close();
+             
+         } catch (IOException e) {
 
-	 try {
-         
-         FileWriter writer = new FileWriter("file.json");
-         writer.write(json);
-         writer.close();
-		
-	 } catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	 }
